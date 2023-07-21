@@ -33,7 +33,7 @@ let equation = {
 function conductOperations(e){
     let buttonText;
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if (e.target.className == 'key' || key){
+    if (e.target.className == 'key' || key || e.target.className == "key operation" || e.target.className == "key Clear"){
         if (key){
             buttonText = key.innerText;
         }
