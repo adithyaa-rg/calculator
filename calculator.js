@@ -31,8 +31,16 @@ let equation = {
 };
 
 function conductOperations(e){
-    if (e.target.className == 'key'){
-        let buttonText = e.target.outerText;
+    let buttonText;
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if (e.target.className == 'key' || key){
+        if (key){
+            buttonText = key.innerText;
+        }
+        else{
+            buttonText = e.target.outerText;
+        }
+        console.log(buttonText);
         if (Number(buttonText) || buttonText == '.' || buttonText === '0'){
             number += buttonText;
             equation.number2 = parseFloat(number);
@@ -63,6 +71,7 @@ function conductOperations(e){
 
 function Calculator(){
     addEventListener('click',(e) => conductOperations(e));
+    addEventListener('keydown', (e) => conductOperations(e));
 }
 
 Calculator();
